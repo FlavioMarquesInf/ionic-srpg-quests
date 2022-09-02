@@ -1,0 +1,104 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Quests</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Quests</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+
+
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Modal</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="setOpen(false)">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos
+            reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. Eaque,
+            dicta.
+          </p>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+
+    <p style="padding: 10px;">
+      Ver com a Dany qual desses dois modelos fica melhor, o de slide left/right ou o de click no botão opções.
+    </p>
+
+    <p style="padding: 10px;">Opções via Slide</p>
+    <ion-card *ngFor="let quest of quests">
+      <!-- Multi-line sliding item with icon options on both sides -->
+      <ion-item-sliding id="item100">
+        <ion-item lines="none">
+          <!-- <ion-note slot="start">
+            <ion-icon name="help-outline" style="font-size: 20px;"></ion-icon>
+          </ion-note> -->
+
+          <!-- <ion-label>{{quest?.questName}}</ion-label> -->
+          <!-- <ion-checkbox slot="start" ></ion-checkbox> -->
+          <!-- [(ngModel)]="quest?.isCompleted" -->
+
+          <ion-label (click)="setOpen(true)">
+            <h2>{{quest?.questName}}</h2>
+            <p>{{quest?.comment}}</p>
+          </ion-label>
+          <ion-note slot="end">
+            Priorize
+          </ion-note>
+        </ion-item>
+
+        <ion-item-options side="start">
+          <ion-item-option color="success">
+            <ion-icon slot="icon-only" name="checkmark-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-card>
+
+    <p style="padding: 10px;">Opções via Click</p>
+
+
+    <ion-card *ngFor="let quest of quests">
+      <ion-item>
+        <ion-label (click)="setOpen(true)">{{quest?.questName}}</ion-label>
+        <ion-button slot="end" fill="none" (click)="presentActionSheet()">
+          <ion-icon
+            slot="icon-only"
+            name="ellipsis-vertical-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-card-content (click)="setOpen(true)">
+        {{quest?.comment}}
+      </ion-card-content>
+
+    </ion-card>
+
+
+  </div>
+</ion-content>
+
