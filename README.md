@@ -1,5 +1,8 @@
 # ionic-srpg-quests
 
-Screenshot
-![srpg-quests-screenshot.png]
+
+
+![Employee data](/repository/assets/employee.png?raw=true "Employee Data title")
+
+![Screenshot](srpg-quests-screenshot.png)
 
